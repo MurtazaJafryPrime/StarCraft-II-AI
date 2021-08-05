@@ -4,6 +4,10 @@ for the game StarCraft II
 """
 
 import random
+from sim_units import get_Units
+
+
+Units = get_Units()
 
 
 def combat_sim(army_comp1, army_comp2, MAX_ROUNDS=600):
@@ -40,7 +44,7 @@ def combat_sim(army_comp1, army_comp2, MAX_ROUNDS=600):
     
     return army2
 
-#Note: still need to add in function to read database of units
+
 class Unit:
     """
     This class is used to represent each unit in an army
@@ -49,8 +53,6 @@ class Unit:
         """
         Creates a new Unit object with the stats of the given name
         """
-        #replace this function with something that will read from the database
-        Units = test_units()
         self.name = name
         if Units[name]['armor'] > 0:
             self.hp = Units[name]['hp'] * Units[name]['armor'] * 1.5
