@@ -151,6 +151,17 @@ def get_health(army):
     return health
 
 
+def get_damage(army):
+    """
+    Input is a list of Units in an army
+    Returns the total dps of that army
+    """
+    damage = 0
+    for unit in army:
+        damage += unit.dps
+    return damage
+
+
 def build_army(army_comp):
     """
     Input is a dictionary representing an army composition
