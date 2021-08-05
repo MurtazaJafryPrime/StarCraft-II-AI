@@ -14,9 +14,9 @@ def get_Units():
     value is that race's dictionary of units
     """
     Units = {}
-    Units['Terran'] = Terran_Units
-    Units['Protoss'] = Protoss_Units
-    Units['Zerg'] = Zerg_Units
+    Units['Terran'] = build_Terran()
+    Units['Protoss'] = build_Protoss()
+    Units['Zerg'] = build_Zerg()
 
     return Units
 
