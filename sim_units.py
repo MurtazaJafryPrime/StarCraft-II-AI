@@ -269,7 +269,7 @@ def get_Protoss():
     Colossus = {}
     # Combat stats
     Colossus['hp'] = 300+200
-    Colossus['dps'] = 18.7
+    Colossus['dps'] = 18.7*2.8
     Colossus['ranged'] = True
     Colossus['armor'] = 1
     Colossus['attributes'] = {'Armored', 'Mechanical', 'Massive', 'Ground'}
