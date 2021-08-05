@@ -1,10 +1,9 @@
 """
 This program is where all of the stats for the StarCraft II units simulation
 are stored.
-Units is a dictionary with the keys being 'Terran', 'Protoss', and 'Zerg', and
-the values being dictionaries with the stats of the units of those respective
-races.
-The primary function that will be called is the get_Units function
+There are four dictionaries, one for each race and one that includes all races
+The dictionaries have the unit name as the key, and then a dictionary with
+the unit stats as the value.
 """
 
 
@@ -14,14 +13,17 @@ def get_Units():
     value is that race's dictionary of units
     """
     Units = {}
-    Units['Terran'] = build_Terran()
-    Units['Protoss'] = build_Protoss()
-    Units['Zerg'] = build_Zerg()
+    Terran = get_Terran()
+    Protoss = get_Protoss()
+    Zerg = get_Zerg()
+    Units.update(Terran)
+    Units.update(Zerg)
+    Units.update(Protoss)
 
     return Units
 
 
-def build_Terran():
+def get_Terran():
     """
     Returns the dictionary of the stats of all Terran units
     """
@@ -106,7 +108,7 @@ def build_Terran():
     return Terran_Units
 
 
-def build_Protoss():
+def get_Protoss():
     """
     Returns a dictionary with all of the Protoss units
     """
@@ -442,7 +444,7 @@ def build_Protoss():
     return Protoss_Units
 
 
-def build_Zerg():
+def get_Zerg():
     """
     Returns a dictionary of all of the Zerg units
     """
