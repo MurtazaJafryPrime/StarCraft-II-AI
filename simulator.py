@@ -49,7 +49,7 @@ class Unit:
     """
     This class is used to represent each unit in an army
     """
-    def __init__(self, name):
+    def __init__(self, name, army):
         """
         Creates a new Unit object with the stats of the given name
         """
@@ -72,6 +72,24 @@ class Unit:
         # repair and attack in the same round
         # repaired = True if Unit has repaired that round
         self.repaired = False
+        # children are used only for the Carrier/Interceptor interaction
+        if name == 'Carrier':
+            self.child = {}
+            self.child[1] = Unit('Interceptor', army)
+            self.child[2] = Unit('Interceptor', army)
+            self.child[3] = Unit('Interceptor', army)
+            self.child[4] = Unit('Interceptor', army)
+            self.child[5] = None
+            self.child[6] = None
+            self.child[7] = None
+            self.child[8] = None
+            army.append(self.child[1])
+            army.append(self.child[2])
+            army.append(self.child[3])
+            army.append(self.child[4])
+            # child_time is used to keep track of time until able to
+            # build a new Interceptor child
+            self.child_time = 0
     
     def __str__(self):
         return self.name
@@ -173,7 +191,7 @@ def build_army(army_comp):
     for name in army_comp:
         count = army_comp[name]
         while count >= 1:
-            army.append(Unit(name))
+            army.append(Unit(name, army))
             count -= 1
     return army
 
@@ -265,99 +283,37 @@ def remove_dead_units(army):
     Returns updated list
     """
     new_army = []
+    # removes normal dead units
     for unit in army:
         if unit.hp >= 0:
             new_army.append(unit)
+        # if Interceptor dies, free up that child space for the Carrier
+        if unit.name == 'Carrier':
+            for n in unit.child:
+                if unit.child[n] is not None:
+                    if unit.child[n].hp <= 0:
+                        unit.child[n] = None
+    # removes alive Interceptors if parent Carrier is dead
+    for unit in army:
+        if (unit.name == 'Carrier') and (unit.hp <= 0):
+            for n in unit.child:
+                if unit.child[n] in new_army:
+                    new_army.remove(unit.child[n])
     return new_army
 
-# unit stats hardcoded in here for testing only, delete later
-def test_units():
-    Terran_Units = {}
-    Units = {}
 
-    Marine = {}
-    # Combat stats
-    Marine['hp'] = 45
-    Marine['dps'] = 9.8
-    Marine['ranged'] = True
-    Marine['armor'] = 0
-    Marine['attributes'] = {'Biological', 'Light', 'Ground'}
-    Marine['type'] = {'Ground'}
-    Marine['targetable'] = {'Ground', 'Air'}
-    Marine['bonuses'] = {}
-    Marine['bonus_dps'] = 0
-    Marine['healer'] = False
-    # Resource stats
-    Marine['mineral'] = 50
-    Marine['gas'] = 0
-    Marine['time'] = 18
-    Marine['supply'] = 1
-    Marine['race'] = 'Terran'
-
-    Terran_Units['Marine'] = Marine
-    Units['Marine'] = Marine
-
-    SCV = {}
-    # Combat stats
-    SCV['hp'] = 45
-    SCV['dps'] = 4.67
-    SCV['ranged'] = False
-    SCV['armor'] = 0
-    SCV['attributes'] = {'Biological', 'Light', 'Mechanical', 'Ground'}
-    SCV['targetable'] = {'Ground'}
-    SCV['type'] = {'Ground'}
-    SCV['bonuses'] = {}
-    SCV['bonus_dps'] = 0
-    SCV['healer'] = True
-    # Resource stats
-    SCV['mineral'] = 75
-    SCV['gas'] = 0
-    SCV['time'] = 12
-    SCV['supply'] = 1
-    SCV['race'] = 'Terran'
-    Terran_Units['SCV'] = SCV
-    Units['SCV'] = SCV
-
-    Medivac = {}
-    # Combat stats
-    Medivac['hp'] = 150
-    Medivac['dps'] = 0
-    Medivac['ranged'] = False
-    Medivac['armor'] = 1
-    Medivac['attributes'] = {'Armored', 'Mechanical', 'Air'}
-    Medivac['targetable'] = {}
-    Medivac['type'] = {'Air'}
-    Medivac['bonuses'] = {}
-    Medivac['bonus_dps'] = 0
-    Medivac['healer'] = True
-    # Resource stats
-    Medivac['mineral'] = 100
-    Medivac['gas'] = 100
-    Medivac['time'] = 30
-    Medivac['supply'] = 2
-    Medivac['race'] = 'Terran'
-    Terran_Units['Medivac'] = Medivac
-    Units['Medivac'] = Medivac
-
-    Hellion = {}
-    # Combat stats
-    Hellion['hp'] = 90
-    Hellion['dps'] = 4.48*5
-    Hellion['ranged'] = True
-    Hellion['armor'] = 0
-    Hellion['attributes'] = {'Light', 'Mechanical', 'Ground'}
-    Hellion['targetable'] = {'Ground'}
-    Hellion['type'] = {'Ground'}
-    Hellion['bonuses'] = {'Light'}
-    Hellion['bonus_dps'] = 3.4*5
-    Hellion['healer'] = False
-    # Resource stats
-    Hellion['mineral'] = 100
-    Hellion['gas'] = 0
-    Hellion['time'] = 21
-    Hellion['supply'] = 2
-    Hellion['race'] = 'Terran'
-    Terran_Units['Hellion'] = Hellion
-    Units['Hellion'] = Hellion
-
-    return Units
+def build_Interceptor(army):
+    """
+    Input is an army.
+    For every Carrier in that army, if an Interceptor
+    slot is availible, build a new Interceptor and
+    add that Interceptor back into the army
+    """
+    for unit in army:
+        if unit.name == 'Carrier':
+            for n in unit.child:
+                if unit.child[n] is None:
+                    if unit.child_time == 0:
+                        unit.child[n] = Unit('Interceptor', army)
+                        army.append(unit.child[n])
+                        unit.child_time = 9
