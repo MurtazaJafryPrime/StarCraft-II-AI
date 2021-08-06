@@ -105,6 +105,215 @@ def get_Terran():
     Hellion['supply'] = 2
     Terran_Units['Hellion'] = Hellion
 
+    Marauder = {}
+    # Combat stats
+    Marauder['hp'] = 125
+    Marauder['dps'] = 9.3
+    Marauder['ranged'] = True
+    Marauder['armor'] = 1
+    Marauder['attributes'] = {'Biological', 'Armored', 'Ground'}
+    Marauder['type'] = {'Ground'}
+    Marauder['targetable'] = {'Ground'}
+    Marauder['bonuses'] = {'Armored'}
+    Marauder['bonus_dps'] = 9.3
+    Marauder['healer'] = False
+    # Resource stats
+    Marauder['mineral'] = 100
+    Marauder['gas'] = 25
+    Marauder['time'] = 21
+    Marauder['supply'] = 2
+    Terran_Units['Marauder'] = Marauder
+
+    Reaper = {}
+    # Combat stats
+    Reaper['hp'] = 60
+    Reaper['dps'] = 10.1
+    Reaper['ranged'] = True
+    Reaper['armor'] = 0
+    Reaper['attributes'] = {'Biological', 'Light', 'Ground'}
+    Reaper['type'] = {'Ground'}
+    Reaper['targetable'] = {'Ground'}
+    Reaper['bonuses'] = {}
+    Reaper['bonus_dps'] = 0
+    Reaper['healer'] = False
+    # Resource stats
+    Reaper['mineral'] = 50
+    Reaper['gas'] = 50
+    Reaper['time'] = 32
+    Reaper['supply'] = 1
+    Terran_Units['Reaper'] = Reaper
+
+    Ghost = {}
+    # Combat stats
+    Ghost['hp'] = 100
+    Ghost['dps'] = 9.3
+    Ghost['ranged'] = True
+    Ghost['armor'] = 0
+    Ghost['attributes'] = {'Biological', 'Psionic', 'Ground'}
+    Ghost['type'] = {'Ground'}
+    Ghost['targetable'] = {'Ground', 'Air'}
+    Ghost['bonuses'] = {'Light'}
+    Ghost['bonus_dps'] = 9.3
+    Ghost['healer'] = False
+    # Resource stats
+    Ghost['mineral'] = 150
+    Ghost['gas'] = 125
+    Ghost['time'] = 29
+    Ghost['supply'] = 2
+    Terran_Units['Ghost'] = Ghost
+
+    Hellbat = {}
+    # Combat stats
+    Hellbat['hp'] = 135
+    Hellbat['dps'] = 12.6*2
+    Hellbat['ranged'] = False
+    Hellbat['armor'] = 0
+    Hellbat['attributes'] = {'Biological', 'Light', 'Mechanical', 'Ground'}
+    Hellbat['type'] = {'Ground'}
+    Hellbat['targetable'] = {'Ground'}
+    Hellbat['bonuses'] = {'Light'}
+    Hellbat['bonus_dps'] = 8.4
+    Hellbat['healer'] = False
+    # Resource stats
+    Hellbat['mineral'] = 100
+    Hellbat['gas'] = 0
+    Hellbat['time'] = 21
+    Hellbat['supply'] = 2
+    Terran_Units['Hellbat'] = Hellbat
+
+    SiegeTank = {}
+    # Combat stats
+    SiegeTank['hp'] = 150
+    SiegeTank['dps'] = 18.69
+    SiegeTank['ranged'] = True
+    SiegeTank['armor'] = 1
+    SiegeTank['attributes'] = {'Armored', 'Mechanical', 'Ground'}
+    SiegeTank['type'] = {'Ground'}
+    SiegeTank['targetable'] = {'Ground'}
+    SiegeTank['bonuses'] = {'Armored'}
+    SiegeTank['bonus_dps'] = 14.02
+    SiegeTank['healer'] = False
+    # Resource stats
+    SiegeTank['mineral'] = 150
+    SiegeTank['gas'] = 125
+    SiegeTank['time'] = 32
+    SiegeTank['supply'] = 3
+    Terran_Units['SiegeTank'] = SiegeTank
+
+    Cyclone = {}
+    # Combat stats
+    Cyclone['hp'] = 120
+    Cyclone['dps'] = 25.2
+    Cyclone['ranged'] = True
+    Cyclone['armor'] = 1
+    Cyclone['attributes'] = {'Armored', 'Mechanical', 'Ground'}
+    Cyclone['type'] = {'Ground'}
+    Cyclone['targetable'] = {'Ground', 'Air'}
+    Cyclone['bonuses'] = {}
+    Cyclone['bonus_dps'] = 0
+    Cyclone['healer'] = False
+    # Resource stats
+    Cyclone['mineral'] = 150
+    Cyclone['gas'] = 100
+    Cyclone['time'] = 32
+    Cyclone['supply'] = 3
+    Terran_Units['Cyclone'] = Cyclone
+
+    Thor = {}
+    # Combat stats
+    Thor['hp'] = 400
+    Thor['dps'] = 65.9+11.2
+    Thor['ranged'] = True
+    Thor['armor'] = 1
+    Thor['attributes'] = {'Armored', 'Mechanical', 'Massive', 'Ground'}
+    Thor['type'] = {'Ground'}
+    Thor['targetable'] = {'Ground', 'Air'}
+    Thor['bonuses'] = {'Light', 'Massive'}
+    Thor['bonus_dps'] = 11.2
+    Thor['healer'] = False
+    # Resource stats
+    Thor['mineral'] = 300
+    Thor['gas'] = 200
+    Thor['time'] = 43
+    Thor['supply'] = 6
+    Terran_Units['Thor'] = Thor
+
+    Viking = {}
+    # Combat stats
+    Viking['hp'] = 135
+    Viking['dps'] = 14
+    Viking['ranged'] = True
+    Viking['armor'] = 0
+    Viking['attributes'] = {'Armored', 'Mechanical', 'Air'}
+    Viking['type'] = {'Air'}
+    Viking['targetable'] = {'Air'}
+    Viking['bonuses'] = {'Armored'}
+    Viking['bonus_dps'] = 5.59
+    Viking['healer'] = False
+    # Resource stats
+    Viking['mineral'] = 150
+    Viking['gas'] = 75
+    Viking['time'] = 30
+    Viking['supply'] = 2
+    Terran_Units['Viking'] = Viking
+
+    Liberator = {}
+    # Combat stats
+    Liberator['hp'] = 180
+    Liberator['dps'] = 65.8
+    Liberator['ranged'] = True
+    Liberator['armor'] = 0
+    Liberator['attributes'] = {'Armored', 'Mechanical', 'Air'}
+    Liberator['type'] = {'Air'}
+    Liberator['targetable'] = {'Ground'}
+    Liberator['bonuses'] = {}
+    Liberator['bonus_dps'] = 0
+    Liberator['healer'] = False
+    # Resource stats
+    Liberator['mineral'] = 150
+    Liberator['gas'] = 150
+    Liberator['time'] = 43
+    Liberator['supply'] = 3
+    Terran_Units['Liberator'] = Liberator
+
+    Banshee = {}
+    # Combat stats
+    Banshee['hp'] = 140
+    Banshee['dps'] = 27
+    Banshee['ranged'] = True
+    Banshee['armor'] = 0
+    Banshee['attributes'] = {'Light', 'Mechanical', 'Air'}
+    Banshee['type'] = {'Air'}
+    Banshee['targetable'] = {'Ground'}
+    Banshee['bonuses'] = {}
+    Banshee['bonus_dps'] = 0
+    Banshee['healer'] = False
+    # Resource stats
+    Banshee['mineral'] = 150
+    Banshee['gas'] = 100
+    Banshee['time'] = 43
+    Banshee['supply'] = 3
+    Terran_Units['Banshee'] = Banshee
+
+    Battlecruiser = {}
+    # Combat stats
+    Battlecruiser['hp'] = 550
+    Battlecruiser['dps'] = 49.8
+    Battlecruiser['ranged'] = True
+    Battlecruiser['armor'] = 3
+    Battlecruiser['attributes'] = {'Armored', 'Massive', 'Mechanical', 'Air'}
+    Battlecruiser['type'] = {'Air'}
+    Battlecruiser['targetable'] = {'Ground', 'Air'}
+    Battlecruiser['bonuses'] = {}
+    Battlecruiser['bonus_dps'] = 0
+    Battlecruiser['healer'] = False
+    # Resource stats
+    Battlecruiser['mineral'] = 400
+    Battlecruiser['gas'] = 300
+    Battlecruiser['time'] = 64
+    Battlecruiser['supply'] = 6
+    Terran_Units['Battlecruiser'] = Battlecruiser
+
     return Terran_Units
 
 
