@@ -89,16 +89,52 @@ def get_army_supply(comp):
     return supply_total
 
 
+def get_Terran_comps():
+    """
+    Reads the file 'Terran_comps.json'
+    Returns a list of dictionaries of all possible
+    Terran army compositions
+    """
+    terran_comps = {}
+    with open("Terran_comps.json", 'r') as read_file:
+        terran_comps = json.load(read_file)
+    return terran_comps
+
+
+def get_Protoss_comps():
+    """
+    Reads the file 'Protoss_comps.json'
+    Returns a list of dictionaries of all possible
+    Protoss army compositions
+    """
+    protoss_comps = {}
+    with open("Protoss_comps.json", 'r') as read_file:
+        protoss_comps = json.load(read_file)
+    return protoss_comps
+
+
+def get_Zerg_comps():
+    """
+    Reads the file 'Zerg_comps.json'
+    Returns a list of dictionaries of all possible
+    Zerg army compositions
+    """
+    zerg_comps = {}
+    with open("Zerg_comps.json", 'r') as read_file:
+        zerg_comps = json.load(read_file)
+    return zerg_comps
+
+
 def main():
-    if False:
+    if True:
         with open('Terran_comps.json', 'w') as fout:
-            json.dump(init_army_comps('Terran'), fout)
+            json.dump(init_army_comps('Terran'), fout, indent=4)
     if True:
         with open('Protoss_comps.json', 'w') as fout:
-            json.dump(init_army_comps('Protoss'), fout)
-    if False:
+            json.dump(init_army_comps('Protoss'), fout, indent=4)
+    if True:
         with open('Zerg_comps.json', 'w') as fout:
-            json.dump(init_army_comps('Zerg'), fout)
+            json.dump(init_army_comps('Zerg'), fout, indent=4)
 
 if __name__ == "__main__":
     main()
