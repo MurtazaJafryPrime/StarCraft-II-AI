@@ -301,7 +301,7 @@ def get_Protoss():
     # Assumes Archon is from two HT merged
     Archon['mineral'] = 50*2
     Archon['gas'] = 150*2
-    Archon['time'] = 39*2+8.57
+    Archon['time'] = 39+8.57
     Archon['supply'] = 4
     Protoss_Units['Archon'] = Archon
 
@@ -449,5 +449,290 @@ def get_Zerg():
     Returns a dictionary of all of the Zerg units
     """
     Zerg_Units = {}
+
+    Drone = {}
+    # Combat stats
+    Drone['hp'] = 40
+    Drone['dps'] = 4.67
+    Drone['ranged'] = False
+    Drone['armor'] = 0
+    Drone['attributes'] = {'Light', 'Biological', 'Ground'}
+    Drone['targetable'] = {'Ground'}
+    Drone['type'] = {'Ground'}
+    Drone['bonuses'] = {}
+    Drone['bonus_dps'] = 0
+    Drone['healer'] = False
+    # Resource stats
+    Drone['mineral'] = 50
+    Drone['gas'] = 0
+    Drone['time'] = 12
+    Drone['supply'] = 1
+    Zerg_Units['Drone'] = Drone
+
+    Queen = {}
+    # Combat stats
+    Queen['hp'] = 175
+    Queen['dps'] = 12.6
+    Queen['ranged'] = True
+    Queen['armor'] = 1
+    Queen['attributes'] = {'Psionic', 'Biological', 'Ground'}
+    Queen['targetable'] = {'Ground', 'Air'}
+    Queen['type'] = {'Ground'}
+    Queen['bonuses'] = {}
+    Queen['bonus_dps'] = 0
+    Queen['healer'] = False
+    # Resource stats
+    Queen['mineral'] = 150
+    Queen['gas'] = 0
+    Queen['time'] = 36
+    Queen['supply'] = 2
+    Zerg_Units['Queen'] = Queen
+
+    Zergling = {}
+    # Combat stats
+    Zergling['hp'] = 35
+    Zergling['dps'] = 10
+    Zergling['ranged'] = False
+    Zergling['armor'] = 0
+    Zergling['attributes'] = {'Light', 'Biological', 'Ground'}
+    Zergling['targetable'] = {'Ground'}
+    Zergling['type'] = {'Ground'}
+    Zergling['bonuses'] = {}
+    Zergling['bonus_dps'] = 0
+    Zergling['healer'] = False
+    # Resource stats
+    Zergling['mineral'] = 25
+    Zergling['gas'] = 0
+    Zergling['time'] = 17
+    Zergling['supply'] = 0.5
+    Zerg_Units['Zergling'] = Zergling
+
+    Baneling = {}
+    # Combat stats
+    Baneling['hp'] = 30
+    Baneling['dps'] = 16*2.2
+    Baneling['ranged'] = False
+    Baneling['armor'] = 0
+    Baneling['attributes'] = {'Biological', 'Ground'}
+    Baneling['targetable'] = {'Ground'}
+    Baneling['type'] = {'Ground'}
+    Baneling['bonuses'] = {'Light'}
+    Baneling['bonus_dps'] = 19
+    Baneling['healer'] = False
+    # Resource stats
+    Baneling['mineral'] = 25+25
+    Baneling['gas'] = 25
+    Baneling['time'] = 17+14
+    Baneling['supply'] = 0.5
+    Zerg_Units['Baneling'] = Baneling
+
+    Roach = {}
+    # Combat stats
+    Roach['hp'] = 145
+    Roach['dps'] = 11.2
+    Roach['ranged'] = True
+    Roach['armor'] = 1
+    Roach['attributes'] = {'Armored', 'Biological', 'Ground'}
+    Roach['targetable'] = {'Ground'}
+    Roach['type'] = {'Ground'}
+    Roach['bonuses'] = {}
+    Roach['bonus_dps'] = 0
+    Roach['healer'] = False
+    # Resource stats
+    Roach['mineral'] = 75
+    Roach['gas'] = 25
+    Roach['time'] = 19
+    Roach['supply'] = 2
+    Zerg_Units['Roach'] = Roach
+
+    Ravager = {}
+    # Combat stats
+    Ravager['hp'] = 120
+    Ravager['dps'] = 14.04
+    Ravager['ranged'] = True
+    Ravager['armor'] = 1
+    Ravager['attributes'] = {'Biological', 'Ground'}
+    Ravager['targetable'] = {'Ground'}
+    Ravager['type'] = {'Ground'}
+    Ravager['bonuses'] = {}
+    Ravager['bonus_dps'] = 0
+    Ravager['healer'] = False
+    # Resource stats
+    Ravager['mineral'] = 25+75
+    Ravager['gas'] = 25+75
+    Ravager['time'] = 19+9
+    Ravager['supply'] = 2+1
+    Zerg_Units['Ravager'] = Ravager
+
+    Hydralisk = {}
+    # Combat stats
+    Hydralisk['hp'] = 90
+    Hydralisk['dps'] = 20.4
+    Hydralisk['ranged'] = True
+    Hydralisk['armor'] = 0
+    Hydralisk['attributes'] = {'Light', 'Biological', 'Ground'}
+    Hydralisk['targetable'] = {'Ground', 'Air'}
+    Hydralisk['type'] = {'Ground'}
+    Hydralisk['bonuses'] = {}
+    Hydralisk['bonus_dps'] = 0
+    Hydralisk['healer'] = False
+    # Resource stats
+    Hydralisk['mineral'] = 100
+    Hydralisk['gas'] = 50
+    Hydralisk['time'] = 24
+    Hydralisk['supply'] = 2
+    Zerg_Units['Hydralisk'] = Hydralisk
+
+    Lurker = {}
+    # Combat stats
+    Lurker['hp'] = 200
+    Lurker['dps'] = 14
+    Lurker['ranged'] = True
+    Lurker['armor'] = 1
+    Lurker['attributes'] = {'Armored', 'Biological', 'Ground'}
+    Lurker['targetable'] = {'Ground'}
+    Lurker['type'] = {'Ground'}
+    Lurker['bonuses'] = {'Armored'}
+    Lurker['bonus_dps'] = 7
+    Lurker['healer'] = False
+    # Resource stats
+    Lurker['mineral'] = 100+50
+    Lurker['gas'] = 50+100
+    Lurker['time'] = 24+18
+    Lurker['supply'] = 2+1
+    Zerg_Units['Lurker'] = Lurker
+
+    SwarmHost = {}
+    # Combat stats
+    SwarmHost['hp'] = 160
+    SwarmHost['dps'] = 0
+    SwarmHost['ranged'] = False
+    SwarmHost['armor'] = 1
+    SwarmHost['attributes'] = {'Armored', 'Biological', 'Ground'}
+    SwarmHost['targetable'] = {}
+    SwarmHost['type'] = {'Ground'}
+    SwarmHost['bonuses'] = {}
+    SwarmHost['bonus_dps'] = 0
+    SwarmHost['healer'] = False
+    # Resource stats
+    SwarmHost['mineral'] = 100
+    SwarmHost['gas'] = 75
+    SwarmHost['time'] = 29
+    SwarmHost['supply'] = 3
+    Zerg_Units['SwarmHost'] = SwarmHost
+
+    Locust = {}
+    # Combat stats
+    Locust['hp'] = 50
+    Locust['dps'] = 23.25
+    Locust['ranged'] = True
+    Locust['armor'] = 0
+    Locust['attributes'] = {'Light', 'Biological', 'Ground'}
+    Locust['targetable'] = {'Ground'}
+    Locust['type'] = {'Ground'}
+    Locust['bonuses'] = {}
+    Locust['bonus_dps'] = 0
+    Locust['healer'] = False
+    # Resource stats
+    Locust['mineral'] = 0
+    Locust['gas'] = 0
+    Locust['time'] = 3.6
+    Locust['supply'] = 0
+    Zerg_Units['Locust'] = Locust
+
+    Ultralisk = {}
+    # Combat stats
+    Ultralisk['hp'] = 500
+    Ultralisk['dps'] = 57.38
+    Ultralisk['ranged'] = False
+    Ultralisk['armor'] = 2
+    Ultralisk['attributes'] = {'Armored', 'Massive', 'Biological', 'Ground'}
+    Ultralisk['targetable'] = {'Ground'}
+    Ultralisk['type'] = {'Ground'}
+    Ultralisk['bonuses'] = {}
+    Ultralisk['bonus_dps'] = 0
+    Ultralisk['healer'] = False
+    # Resource stats
+    Ultralisk['mineral'] = 300
+    Ultralisk['gas'] = 200
+    Ultralisk['time'] = 39
+    Ultralisk['supply'] = 6
+    Zerg_Units['Ultralisk'] = Ultralisk
+
+    Mutalisk = {}
+    # Combat stats
+    Mutalisk['hp'] = 120
+    Mutalisk['dps'] = 8.26+2.75+0.92
+    Mutalisk['ranged'] = True
+    Mutalisk['armor'] = 0
+    Mutalisk['attributes'] = {'Light', 'Biological', 'Air'}
+    Mutalisk['targetable'] = {'Ground', 'Air'}
+    Mutalisk['type'] = {'Air'}
+    Mutalisk['bonuses'] = {}
+    Mutalisk['bonus_dps'] = 0
+    Mutalisk['healer'] = False
+    # Resource stats
+    Mutalisk['mineral'] = 100
+    Mutalisk['gas'] = 100
+    Mutalisk['time'] = 24
+    Mutalisk['supply'] = 2
+    Zerg_Units['Mutalisk'] = Mutalisk
+
+    Corruptor = {}
+    # Combat stats
+    Corruptor['hp'] = 200
+    Corruptor['dps'] = 10.29
+    Corruptor['ranged'] = True
+    Corruptor['armor'] = 2
+    Corruptor['attributes'] = {'Armored', 'Biological', 'Air'}
+    Corruptor['targetable'] = { 'Air'}
+    Corruptor['type'] = {'Air'}
+    Corruptor['bonuses'] = {'Massive'}
+    Corruptor['bonus_dps'] = 4.4
+    Corruptor['healer'] = False
+    # Resource stats
+    Corruptor['mineral'] = 150
+    Corruptor['gas'] = 100
+    Corruptor['time'] = 29
+    Corruptor['supply'] = 2
+    Zerg_Units['Corruptor'] = Corruptor
+
+    BroodLord = {}
+    # Combat stats
+    BroodLord['hp'] = 225
+    BroodLord['dps'] = 22.4
+    BroodLord['ranged'] = True
+    BroodLord['armor'] = 1
+    BroodLord['attributes'] = {'Armored', 'Massive', 'Biological', 'Air'}
+    BroodLord['targetable'] = { 'Ground'}
+    BroodLord['type'] = {'Air'}
+    BroodLord['bonuses'] = {}
+    BroodLord['bonus_dps'] = 0
+    BroodLord['healer'] = False
+    # Resource stats
+    BroodLord['mineral'] = 150+150
+    BroodLord['gas'] = 100+150
+    BroodLord['time'] = 29+24
+    BroodLord['supply'] = 2+2
+    Zerg_Units['BroodLord'] = BroodLord
+
+    Broodling = {}
+    # Combat stats
+    Broodling['hp'] = 30
+    Broodling['dps'] = 8.7
+    Broodling['ranged'] = False
+    Broodling['armor'] = 0
+    Broodling['attributes'] = {'Light', 'Biological', 'Ground'}
+    Broodling['targetable'] = { 'Ground'}
+    Broodling['type'] = {'Ground'}
+    Broodling['bonuses'] = {}
+    Broodling['bonus_dps'] = 0
+    Broodling['healer'] = False
+    # Resource stats
+    Broodling['mineral'] = 0
+    Broodling['gas'] = 0
+    Broodling['time'] = 0
+    Broodling['supply'] = 0
+    Zerg_Units['Broodling'] = Broodling
 
     return Zerg_Units

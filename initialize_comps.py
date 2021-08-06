@@ -33,6 +33,9 @@ def init_army_comps(race, supply_cap=200):
         race_units.remove('Interceptor')
     elif race == 'Zerg':
         race_units = list(get_Zerg().keys())
+        # Locust and Broodlings are special case
+        race_units.remove('Locust')
+        race_units.remove('Broodling')
     
     comps = []
     
@@ -87,12 +90,15 @@ def get_army_supply(comp):
 
 
 def main():
-    with open('Terran_comps.json', 'w') as fout:
-        json.dump(init_army_comps('Terran'), fout)
-    with open('Protoss_comps.json', 'w') as fout:
-        json.dump(init_army_comps('Protoss'), fout)
-    with open('Zerg_comps.json', 'w') as fout:
-        json.dump(init_army_comps('Zerg'), fout)
+    if False:
+        with open('Terran_comps.json', 'w') as fout:
+            json.dump(init_army_comps('Terran'), fout)
+    if True:
+        with open('Protoss_comps.json', 'w') as fout:
+            json.dump(init_army_comps('Protoss'), fout)
+    if False:
+        with open('Zerg_comps.json', 'w') as fout:
+            json.dump(init_army_comps('Zerg'), fout)
 
 if __name__ == "__main__":
     main()
