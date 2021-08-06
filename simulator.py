@@ -37,6 +37,11 @@ def combat_sim(army_comp1, army_comp2, MAX_ROUNDS=600):
             deal_damage(army2, army1)
         army1 = remove_dead_units(army1)
         army2 = remove_dead_units(army2)
+        build_Interceptor(army1)
+        build_Interceptor(army2)
+        track_Locust_Broodlings(army1)
+        track_Locust_Broodlings(army2)
+
         rounds += 1
     
     if rounds >= MAX_ROUNDS:
@@ -72,24 +77,28 @@ class Unit:
         # repair and attack in the same round
         # repaired = True if Unit has repaired that round
         self.repaired = False
-        # children are used only for the Carrier/Interceptor interaction
+        # Carrier/Interceptor interaction
         if name == 'Carrier':
             self.child = {}
-            self.child[1] = Unit('Interceptor', army)
-            self.child[2] = Unit('Interceptor', army)
-            self.child[3] = Unit('Interceptor', army)
-            self.child[4] = Unit('Interceptor', army)
-            self.child[5] = None
-            self.child[6] = None
-            self.child[7] = None
-            self.child[8] = None
-            army.append(self.child[1])
-            army.append(self.child[2])
-            army.append(self.child[3])
-            army.append(self.child[4])
+            for n in range(8):
+                self.child[n] = Unit('Interceptor', army)
+                army.append(self.child[n])
             # child_time is used to keep track of time until able to
             # build a new Interceptor child
             self.child_time = 0
+        # SwarmHost/Locust interaction
+        if name == 'SwarmHost':
+            self.child = {}
+            for n in range(2):
+                self.child[n] = Unit('Locust', army)
+                army.append(self.child[n])
+        if name == 'Locust':
+            self.live_time = 18
+        # BroodLord/Broodling interaction
+        if name == 'BroodLord':
+            self.spawn_time = 0
+        if name == 'Broodling':
+            self.live_time = 6
     
     def __str__(self):
         return self.name
@@ -230,10 +239,10 @@ def deal_damage(army, enemy_army):
     Updates the list of enemy Units with damaged health numbers
     """
     for unit in army:
-        deal_unit_dps(unit, enemy_army)
+        deal_unit_dps(unit, enemy_army, army)
 
 
-def deal_unit_dps(unit, enemy_army):
+def deal_unit_dps(unit, enemy_army, ally_army):
     """
     Input is attacking Unit and list of Units being attacked
     Calculates the damage dealt to enemy army by the single unit
@@ -260,6 +269,17 @@ def deal_unit_dps(unit, enemy_army):
             dmg_temp = damage
             damage -= enemy.hp
             enemy.hp -= dmg_temp
+            # Banelings kill themselves after attacking
+            if unit.name == 'Baneling':
+                unit.hp = 0
+        # BroodLords spawn Broodlings on hit, every 1.79 seconds
+        # This will be rounded to spawn a Broodling every other round
+        if unit.name == 'BroodLord':
+            if unit.spawn_time == 0:
+                ally_army.append(Unit('Broodling'))
+                unit.spawn_time = 1
+            else:
+                unit.spawn_time -= 1
     # reset repaired status for next round
     unit.repaired = False
 
@@ -273,7 +293,7 @@ def deal_ranged_dps(army, enemy_army):
     """
     for unit in army:
         if unit.ranged:
-            deal_unit_dps(unit, enemy_army)
+            deal_unit_dps(unit, enemy_army, army)
 
 
 def remove_dead_units(army):
@@ -317,3 +337,24 @@ def build_Interceptor(army):
                         unit.child[n] = Unit('Interceptor', army)
                         army.append(unit.child[n])
                         unit.child_time = 9
+
+
+def track_Locust_Broodlings(army):
+    """
+    Input is a list of Units in an army
+    Locusts can only live for 18 rounds and
+    Broodlings can only live for 6 rounds
+    Kills Locusts and Broodlings after exceeding their
+    respective time limits
+    """
+    for unit in army:
+        if unit.name == 'Locust':
+            if unit.live_time <= 0:
+                army.remove(unit)
+            else:
+                unit.live_time -= 1
+        if unit.name == 'Broodling':
+            if unit.live_time <= 0:
+                army.remove(unit)
+            else:
+                unit.live_time -= 1
