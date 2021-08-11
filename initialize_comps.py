@@ -44,7 +44,7 @@ def init_army_comps(race, supply_cap=200):
     for name in race_units:
         base[name] = 0
     prod = product(range(supply_cap), repeat=len(base))
-    prod = list(prod)
+    # prod = list(prod)
     for combo in prod:
         comp = base
         i = 0
