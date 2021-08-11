@@ -50,10 +50,10 @@ def init_army_comps(race, supply_cap=200):
         for n in base:
             comp[n] = combo[i]
             i += 1
-            temp_comp = comp.copy()
-            if temp_comp not in comps:
-                if (get_army_supply(temp_comp) <= supply_cap) and (not extra_Motherships(temp_comp)):
-                    comps.append(temp_comp)
+        temp_comp = comp.copy()
+        if temp_comp not in comps:
+            if (get_army_supply(temp_comp) <= supply_cap) and (not extra_Motherships(temp_comp)):
+                comps.append(temp_comp)
     # remove all comps with more than one Mothership
     # or more than the supply cap
     #temp_comps = comps
