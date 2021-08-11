@@ -55,11 +55,12 @@ def init_army_comps(race, supply_cap=200):
             if temp_comp not in comps:
                 comps.append(temp_comp)
     # remove all comps with more than one Mothership
-    # or more than 200 supply
+    # or more than the supply cap
+    temp_comps = comps
     for comp in comps:
         if (get_army_supply(comp) > supply_cap) or extra_Motherships(comp):
-            comps.remove(comp)
-    
+            temp_comps.remove(comp)
+    comps = temp_comps
     return comps
 
 
