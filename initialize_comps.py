@@ -44,7 +44,6 @@ def init_army_comps(race, supply_cap=200):
     for name in race_units:
         base[name] = 0
     prod = product(range(supply_cap), repeat=len(base))
-    # prod = list(prod)
     for combo in prod:
         comp = base
         i = 0
@@ -53,14 +52,15 @@ def init_army_comps(race, supply_cap=200):
             i += 1
             temp_comp = comp.copy()
             if temp_comp not in comps:
-                comps.append(temp_comp)
+                if (get_army_supply(temp_comp) <= supply_cap) and (not extra_Motherships(temp_comp)):
+                    comps.append(temp_comp)
     # remove all comps with more than one Mothership
     # or more than the supply cap
-    temp_comps = comps
-    for comp in comps:
-        if (get_army_supply(comp) > supply_cap) or extra_Motherships(comp):
-            temp_comps.remove(comp)
-    comps = temp_comps
+    #temp_comps = comps
+    #for comp in comps:
+    #    if (get_army_supply(comp) > supply_cap) or extra_Motherships(comp):
+    #        temp_comps.remove(comp)
+    #comps = temp_comps
     return comps
 
 
