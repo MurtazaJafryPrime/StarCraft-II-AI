@@ -1,7 +1,7 @@
 """
 This file contains the funcitons needed to run the linear program that
 finds an optimal counter-army.
-Dependent upon the files viability.py, sim_units.py, simulator.py, and initialize_comps.py
+Dependent upon the files viability.py, sim_units.py, simulator.py, and generate_comps.py
 along with the pyscipopt library.
 """
 
@@ -9,8 +9,8 @@ from pyscipopt import Model, quicksum
 from viability import viability
 from sim_units import get_Units, get_Terran, get_Protoss, get_Zerg
 from simulator import combat_sim
-from initialize_comps import get_Terran_comps, get_Protoss_comps, get_Zerg_comps
-from initialize_comps import get_army_supply
+from generate_comps import get_Terran_comps, get_Protoss_comps, get_Zerg_comps
+from generate_comps import get_army_supply
 
 
 def find_optimal_army(enemy_comp, test_type='cost', race='Terran', viab='units', supply_cap=200):
