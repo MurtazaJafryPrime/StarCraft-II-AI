@@ -3,7 +3,7 @@ This program uses a Monte Carlo simulation to randomly generate the
 army compositions used in our linear program.
 Requires the file sim_units.py and the random package
 """
-from random import randint
+import random
 from sim_units import get_Units, get_Terran, get_Protoss, get_Zerg
 import json
 
@@ -29,6 +29,7 @@ def init_army_comps(race, supply_cap=200, num_comps=1000):
         race_units.remove('Locust')
         race_units.remove('Broodling')
     
+    Units = get_Units()
     comps = []
     
     # initialize base format of an army composition
@@ -39,11 +40,20 @@ def init_army_comps(race, supply_cap=200, num_comps=1000):
     while count < num_comps:
         comp = base.copy()
         # randomly generate an army comp
-        for name in base:
-            comp[name] = randint(0,supply_cap)
+        # shuffle order of names, continuously update the
+        # max number of units that can be randomly generated
+        names = list(base.keys())
+        random.shuffle(names)
+        current_supply = supply_cap
+        for name in names:
+            max_unit = int(current_supply / Units[name]['supply'])
+            if (get_army_supply(comp) <= current_supply) and (not extra_Motherships(comp)):
+                comp[name] = random.randint(0, max_unit)
+            current_supply -= get_army_supply(comp)
+        
         temp_comp = comp.copy()
-        # check that random comp is not already generated and
-        # that random comp is a valid comp
+        # check that random comp is not already generated
+        # only include valid comps
         if temp_comp not in comps:
             if (get_army_supply(temp_comp) <= supply_cap) and (not extra_Motherships(temp_comp)):
                 comps.append(temp_comp)
@@ -117,13 +127,15 @@ def main():
     if True:
         with open('Terran_comps.json', 'w') as fout:
             json.dump(init_army_comps('Terran'), fout, indent=4)
+        print("Done with Terran")
     if True:
         with open('Protoss_comps.json', 'w') as fout:
             json.dump(init_army_comps('Protoss'), fout, indent=4)
-            print("Done with Protoss")
+        print("Done with Protoss")
     if True:
         with open('Zerg_comps.json', 'w') as fout:
             json.dump(init_army_comps('Zerg'), fout, indent=4)
+        print("Done with Zerg")
 
 
 if __name__ == "__main__":
