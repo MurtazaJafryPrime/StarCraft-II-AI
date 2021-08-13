@@ -10,13 +10,14 @@ from sim_units import get_Units
 Units = get_Units()
 
 
-def combat_sim(army_comp1, army_comp2, MAX_ROUNDS=600):
+def combat_sim(army_comp1, army_comp2, MAX_ROUNDS=200):
     """
+    Army 1 is enemy, Army 2 is test
     Input two army compositions written as dictionary with unit names as
     keys, unit counts as values. Simulates combat with the two army.
     The first army is assumed to be the enemy army, the second army is
     the army composition we are testing viability for.
-    If combat takes longer than 10 minutes then it is assumed to be a
+    If combat takes longer than 200 seconds then it is assumed to be a
     stalemate and army2 is forcibly killed off
     Returns remaining army composition of army2
     """

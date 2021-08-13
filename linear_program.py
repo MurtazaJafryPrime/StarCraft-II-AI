@@ -1,7 +1,7 @@
 """
 This file contains the funcitons needed to run the linear program that
 finds an optimal counter-army.
-Dependent upon the files viability.py, sim_units.py, simulator.py, and generate_comps.py
+Dependent upon the files viability.py, sim_units.py, simulator.py, and initialize_comps.py
 along with the pyscipopt library.
 """
 
