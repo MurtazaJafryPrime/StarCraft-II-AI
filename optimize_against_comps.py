@@ -4,7 +4,8 @@ army compositions. The results are saved as txt files
 """
 from sim_units import get_Units, get_Terran, get_Protoss, get_Zerg
 from generate_comps import get_army_supply
-from linear_program import find_optimal_army
+from linear_program import find_optimal_army, init_army_comps
+import json
 
 
 def scale_comps(base_comps, supply_cap=200):
@@ -38,11 +39,13 @@ def scale_comps(base_comps, supply_cap=200):
     return scaled_comps
 
 
-def find_counters_from_list(army_list, name, supply_cap=200):
+def find_counters_from_list(army_list, name, supply_cap=200, reshuffle=False):
     """
     Input is a list of army compositions
     name is a string, name of txt file we will create and save our results to
     supply_cap is an integer of the largest army we wish to test
+    reshuffle is a Boolean that determines if we are regenerating our list of
+    possible army comps for every enemy comp we are testing
     Prints out the optimal army counters for each inputed army
     Creates a file
     """
@@ -51,6 +54,17 @@ def find_counters_from_list(army_list, name, supply_cap=200):
     protoss_counters = {}
     zerg_counters = {}
     for enemy in army_list.values():
+        # re-randomize new possible army comps every time
+        # should drastically decrease the amount of time needed to run the LP
+        # since number of comps is much smaller.
+        if reshuffle:
+            with open('Terran_comps.json', 'w') as fout:
+                json.dump(init_army_comps('Terran', num_comps=100), fout, indent=4)
+            with open('Protoss_comps.json', 'w') as fout:
+                json.dump(init_army_comps('Protoss', num_comps=100), fout, indent=4)
+            with open('Zerg_comps.json', 'w') as fout:
+                json.dump(init_army_comps('Zerg', num_comps=100), fout, indent=4)
+            
         terran_counters[str(enemy)] = find_optimal_army(enemy, race='Terran', supply_cap=supply_cap)
         protoss_counters[str(enemy)] = find_optimal_army(enemy, race='Protoss', supply_cap=supply_cap)
         zerg_counters[str(enemy)] = find_optimal_army(enemy, race='Zerg', supply_cap=supply_cap)
@@ -72,6 +86,15 @@ def find_counters_from_list(army_list, name, supply_cap=200):
         for line in zerg_counters:
             file.write(str(line))
             file.write('\n')
+    
+    print("Terran Counters to " + name + " armies:")
+    print(terran_counters)
+    print()
+    print("Protoss Counters to " + name + " armies:")
+    print(protoss_counters)
+    print()
+    print("Zerg Counters to " + name + " armies:")
+    print(zerg_counters)
 
 
 def create_terran_bio():
@@ -139,9 +162,9 @@ def main():
     terran_bio = create_terran_bio()
     skytoss = create_skytoss()
     zerg_rush = create_zerg_comps()
-    find_counters_from_list(terran_bio, 'Terran Bio')
-    find_counters_from_list(skytoss, 'Skytoss')
-    find_counters_from_list(zerg_rush, 'Zerglings and Friends')
+    find_counters_from_list(terran_bio, 'Terran Bio', reshuffle=True)
+    find_counters_from_list(skytoss, 'Skytoss', reshuffle=True)
+    find_counters_from_list(zerg_rush, 'Zerglings and Friends', reshuffle=True)
 
 
 if __name__ == "__main__":

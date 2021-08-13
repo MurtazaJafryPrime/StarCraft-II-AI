@@ -17,7 +17,7 @@ from itertools import product
 import json
 
 
-def init_army_comps(race, supply_cap=200):
+def init_army_comps(race, supply_cap=5):
     """
     Input is the race we wish to build army comps for
     Creates a list of all possible army compositions with
@@ -44,6 +44,7 @@ def init_army_comps(race, supply_cap=200):
     for name in race_units:
         base[name] = 0
     prod = product(range(supply_cap), repeat=len(base))
+    #prod = list(prod)
     for combo in prod:
         comp = base
         i = 0
@@ -51,9 +52,9 @@ def init_army_comps(race, supply_cap=200):
             comp[n] = combo[i]
             i += 1
         temp_comp = comp.copy()
-        if temp_comp not in comps:
-            if (get_army_supply(temp_comp) <= supply_cap) and (not extra_Motherships(temp_comp)):
-                comps.append(temp_comp)
+        #if temp_comp not in comps:
+        if (get_army_supply(temp_comp) <= supply_cap) and (not extra_Motherships(temp_comp)):
+            comps.append(temp_comp)
     # remove all comps with more than one Mothership
     # or more than the supply cap
     #temp_comps = comps
@@ -133,6 +134,7 @@ def main():
     if True:
         with open('Protoss_comps.json', 'w') as fout:
             json.dump(init_army_comps('Protoss'), fout, indent=4)
+            print("Done with Protoss")
     if True:
         with open('Zerg_comps.json', 'w') as fout:
             json.dump(init_army_comps('Zerg'), fout, indent=4)
