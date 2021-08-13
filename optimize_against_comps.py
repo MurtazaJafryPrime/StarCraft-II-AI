@@ -72,15 +72,6 @@ def find_counters_from_list(army_list, name, supply_cap=200):
         for line in zerg_counters:
             file.write(str(line))
             file.write('\n')
-    
-    print("Terran Counters to " + name + " armies:")
-    print(terran_counters)
-    print()
-    print("Protoss Counters to " + name + " armies:")
-    print(protoss_counters)
-    print()
-    print("Zerg Counters to " + name + " armies:")
-    print(zerg_counters)
 
 
 def create_terran_bio():
