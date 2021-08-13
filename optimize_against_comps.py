@@ -3,8 +3,8 @@ This program is used for finding army counters for various types of
 army compositions. The results are saved as txt files
 """
 from sim_units import get_Units, get_Terran, get_Protoss, get_Zerg
-from generate_comps import get_army_supply
-from linear_program import find_optimal_army, init_army_comps
+from generate_comps import get_army_supply, init_army_comps
+from linear_program import find_optimal_army
 import json
 
 
