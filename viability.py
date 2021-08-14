@@ -16,7 +16,7 @@ def viability(enemy_comp, test_comp, test_type='units'):
     least 10% of its test type remaining 90% of the time, return 1
     Otherwise return 0
     """
-    sim_count = 200
+    sim_count = 100
     Units = get_Units()
     test_limit = 0
     if test_type == 'units':

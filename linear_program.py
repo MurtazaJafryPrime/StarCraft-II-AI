@@ -10,10 +10,11 @@ from viability import viability
 from sim_units import get_Units, get_Terran, get_Protoss, get_Zerg
 from simulator import combat_sim
 from generate_comps import get_Terran_comps, get_Protoss_comps, get_Zerg_comps
-from generate_comps import get_army_supply
+from generate_comps import get_army_supply, init_army_comps
+import time
 
 
-def find_optimal_army(enemy_comp, test_type='cost', race='Terran', viab='units', supply_cap=200):
+def find_optimal_army(enemy_comp, test_type='cost', race='Terran', viab='units', supply_cap=200, min_supply=0):
     """
     Input is the army composition we are trying to optimize against
     test_type is a string, either "cost" or "time", determines what we
@@ -24,14 +25,11 @@ def find_optimal_army(enemy_comp, test_type='cost', race='Terran', viab='units',
     Finds an army composition of the given race that is the most efficent in terms of test_type
     Returns that optimal army composition as a string
     """
+    start_time = time.time()
     army_model = Model("StarCraftII Army")
     comps = None
-    if race == 'Terran':
-        all_comps = get_Terran_comps()
-    elif race == 'Protoss':
-        all_comps = get_Protoss_comps()
-    elif race == 'Zerg':
-        all_comps = get_Zerg_comps()
+    if (race == 'Terran') or (race == 'Protoss') or (race == 'Zerg'):
+        all_comps = init_army_comps(race, num_comps=100, supply_cap=supply_cap, min_supply=min_supply)
     else:
         error_message = "Race must be either 'Terran', 'Protoss', or 'Zerg'"
         return error_message
@@ -69,7 +67,7 @@ def find_optimal_army(enemy_comp, test_type='cost', race='Terran', viab='units',
                 opt_comp += ", viability:" + viab
     else:
         opt_comp = "No optimal army could be found"
-
+    print(time.time() - start_time)
     return opt_comp
 
 
