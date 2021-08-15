@@ -1,0 +1,18 @@
+Enemy army:
+{'Marine': 45, 'Marauder': 15, 'Medivac': 6}
+
+1221.1585371494293
+
+Counters:Army Comp{'Marine': 122, 'SCV': 0, 'Medivac': 0, 'Hellion': 0, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 0, 'SiegeTank': 0, 'Cyclone': 0, 'Thor': 0, 'Viking': 0, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 0, 'SCV': 0, 'Medivac': 0, 'Hellion': 0, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 20, 'SiegeTank': 0, 'Cyclone': 0, 'Thor': 0, 'Viking': 27, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 0, 'SCV': 0, 'Medivac': 0, 'Hellion': 0, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 0, 'SiegeTank': 30, 'Cyclone': 0, 'Thor': 0, 'Viking': 0, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 0, 'SCV': 0, 'Medivac': 0, 'Hellion': 0, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 0, 'SiegeTank': 26, 'Cyclone': 0, 'Thor': 0, 'Viking': 0, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 0, 'SCV': 0, 'Medivac': 0, 'Hellion': 0, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 0, 'SiegeTank': 0, 'Cyclone': 31, 'Thor': 0, 'Viking': 0, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 0, 'SCV': 0, 'Medivac': 0, 'Hellion': 0, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 0, 'SiegeTank': 26, 'Cyclone': 0, 'Thor': 0, 'Viking': 0, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 0, 'SCV': 0, 'Medivac': 0, 'Hellion': 0, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 0, 'SiegeTank': 0, 'Cyclone': 0, 'Thor': 17, 'Viking': 1, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 0, 'SCV': 0, 'Medivac': 0, 'Hellion': 0, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 53, 'SiegeTank': 0, 'Cyclone': 0, 'Thor': 0, 'Viking': 0, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 46, 'SCV': 0, 'Medivac': 0, 'Hellion': 14, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 0, 'SiegeTank': 0, 'Cyclone': 0, 'Thor': 0, 'Viking': 0, 'Liberator': 2, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+Army Comp{'Marine': 0, 'SCV': 0, 'Medivac': 0, 'Hellion': 48, 'Marauder': 0, 'Reaper': 0, 'Ghost': 0, 'Hellbat': 0, 'SiegeTank': 0, 'Cyclone': 0, 'Thor': 0, 'Viking': 0, 'Liberator': 0, 'Banshee': 0, 'Battlecruiser': 0}, Terran= 0.0, viability:units
+
+
+
