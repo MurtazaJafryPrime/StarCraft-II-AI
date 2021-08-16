@@ -8,13 +8,12 @@ from sim_units import get_Units, get_Terran, get_Protoss, get_Zerg
 import json
 
 
-def init_army_comps(race, supply_cap=200, num_comps=1000, min_supply=0):
+def init_army_comps(race, supply_cap=200, num_comps=1000):
     """
     Input is the race we wish to build army comps for
     race: 'Terran', 'Protoss', 'Zerg'
     Supply cap is an integer of the largest army size (default 200)
     num_comps is the number of army compositions we will generate
-    min_supply is an int, the lowest army size we wish to generate
     Returns a list of num_comps randomly generated valid army compositions
     """
     race_units = {}
@@ -48,8 +47,7 @@ def init_army_comps(race, supply_cap=200, num_comps=1000, min_supply=0):
         current_supply = supply_cap
         for name in names:
             max_unit = int(current_supply / Units[name]['supply'])
-            if (get_army_supply(comp) <= current_supply) and (not extra_Motherships(comp)
-                and (get_army_supply(comp) >= min_supply)):
+            if (get_army_supply(comp) <= current_supply) and (not extra_Motherships(comp)):
                 comp[name] = random.randint(0, max_unit)
             current_supply -= get_army_supply(comp)
         

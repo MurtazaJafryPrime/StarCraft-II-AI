@@ -42,7 +42,6 @@ def combat_sim(army_comp1, army_comp2, MAX_ROUNDS=200):
         build_Interceptor(army2)
         track_Locust_Broodlings(army1)
         track_Locust_Broodlings(army2)
-
         rounds += 1
     
     if rounds >= MAX_ROUNDS:
@@ -119,7 +118,7 @@ def healing_units(army):
     """
     for unit in army:
         if unit.healer:
-            allies = army
+            allies = army.copy()
             allies.remove(unit)
             if unit.name == 'Medivac':
                 heal = 12.6
