@@ -1,5 +1,4 @@
-# Math381FinalProject
-This is the final project for Math381
+# StarCraft II AI
 
 The jupyter notebook Counters to Terran Bio Army contains the code and data used to
 run our example case optimizing against a specific Terran army composition.
